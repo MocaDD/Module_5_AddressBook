@@ -104,4 +104,11 @@ public class MethodsUsedInMenu {
             c.printStackTrace();
         }
     }
+
+    protected void printTheNameOfAllContacts()  {
+        System.out.println("Your contacts are:");
+        for (int i = 0; i < addressBook.getSizeOfAddressBook(); i++)
+            System.out.println(addressBook.getContactFromIndex(i).getName());
+        System.out.println("\n");
+    }
 }

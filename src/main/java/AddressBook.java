@@ -30,7 +30,11 @@ public class AddressBook implements java.io.Serializable    {
         return null;
     }
 
-    public Contact getContactFromIndex(int index)    {
+    public int getSizeOfAddressBook()    {
+        return contacts.size();
+    }
+
+    public Contact getContactFromIndex(int index)  {
         return contacts.get(index);
     }
 }

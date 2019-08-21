@@ -7,7 +7,7 @@ public class Menu {
 
     public void display_menu() {
         System.out.println("1) Add a contact\n2) Remove a contact\n3) Search a contact by name\n4) Export address book\n" +
-                "5) Import address book\n" + "6) Exit\n");
+                "5) Import address book\n" + "6) See the name off all contacts in the address book\n" + "7) Exit\n");
         System.out.print("Selection: ");
     }
 
@@ -45,6 +45,10 @@ public class Menu {
                     menuMethods.importAddressBook();
                     break;
                 case 6:
+                    System.out.println("You picked option 6");
+                    menuMethods.printTheNameOfAllContacts();
+                    break;
+                case 7:
                     System.out.println("Exiting Program...");
                     System.exit(0);
                     break;
