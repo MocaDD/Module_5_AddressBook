@@ -2,19 +2,19 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MethodsUsedInMenu {
+ class MethodsUsedInMenu {
 
     private Scanner scanner;
     private AddressBook addressBook;
     private String nameOfTheFile;
 
-    public MethodsUsedInMenu(AddressBook addressBook, String nameOfTheFile) {
+     MethodsUsedInMenu(AddressBook addressBook, String nameOfTheFile) {
         this.addressBook = addressBook;
         this.nameOfTheFile = nameOfTheFile;
         this.scanner = new Scanner(System.in);
     }
 
-    protected void addContact() {
+     void addContact() {
         System.out.println("Please introduce the following details about the contact:");
         System.out.println("Name:");
         String name = scanner.nextLine();
@@ -39,7 +39,7 @@ public class MethodsUsedInMenu {
         System.out.println("\n");
     }
 
-    protected void removeContact() {
+     void removeContact() {
         System.out.println("Please introduce the name of the contact:");
         String nameOfTheContact = scanner.nextLine();
         if (addressBook.removeContact(new Contact(nameOfTheContact, null, null, null)))
@@ -47,7 +47,7 @@ public class MethodsUsedInMenu {
         System.out.println("\n");
     }
 
-    protected void searchContactByName() {
+     void searchContactByName() {
         System.out.println("Please introduce the name of the contact you want to search:");
         String name = scanner.nextLine();
         Integer searchResult = addressBook.searchContactByName(name);
@@ -56,14 +56,14 @@ public class MethodsUsedInMenu {
         }
         else {
             System.out.println(name + " is a contact in this address book and has the following details:");
-            ArrayList<ContactData> data  = addressBook.getContactFromIndex(searchResult.intValue()).getData();
+            ArrayList<ContactData> data  = addressBook.getContactFromIndex(searchResult).getData();
             for (ContactData s : data)
             {
-                if (s.getClass().getName() == "Address")   {
+                if (s.getClass().getName().equals("Address"))   {
                     Address temp = (Address)s;
                     System.out.println("Street name: " + temp.getStreetName() + "\nStreet number: "
                             + temp.getStreetNumber());
-                } else if (s.getClass().getName() == "Email")  {
+                } else if (s.getClass().getName().equals("Email"))  {
                     Email temp = (Email) s;
                     System.out.println("Email: " + temp.getEmail());
                 } else  {
@@ -75,7 +75,7 @@ public class MethodsUsedInMenu {
         System.out.println("\n");
     }
 
-    protected void exportAddressBook() {
+     void exportAddressBook() {
         try {
             FileOutputStream fileOut = new FileOutputStream(nameOfTheFile);
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -88,7 +88,7 @@ public class MethodsUsedInMenu {
         }
     }
 
-    protected void importAddressBook() {
+     void importAddressBook() {
         try {
             FileInputStream fileIn = new FileInputStream(nameOfTheFile);
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -105,7 +105,7 @@ public class MethodsUsedInMenu {
         }
     }
 
-    protected void printTheNameOfAllContacts()  {
+     void printTheNameOfAllContacts()  {
         System.out.println("Your contacts are:");
         for (int i = 0; i < addressBook.getSizeOfAddressBook(); i++)
             System.out.println(addressBook.getContactFromIndex(i).getName());
